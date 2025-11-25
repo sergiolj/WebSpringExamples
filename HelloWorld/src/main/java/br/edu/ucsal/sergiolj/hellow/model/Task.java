@@ -24,8 +24,9 @@ public class Task {
 	public Task() {}
 	
 	
-	public Task(String name, String description, boolean done) {
+	public Task(Long id, String name, String description, boolean done) {
 		super();
+		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.done = done;
@@ -50,6 +51,10 @@ public class Task {
 	}
 	public void setDone(boolean done) {
 		this.done = done;
+	}
+
+	public Long getId() {
+		return id;
 	}
 	
 	

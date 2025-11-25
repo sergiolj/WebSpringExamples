@@ -41,4 +41,16 @@ public class TaskService {
 			return repository.save(task);
 		});
 	}
+
+	public boolean updateTaskDone(Long id, boolean done) {
+		Task task = repository.findById(id).orElse(null);
+		
+		if(task != null){
+			task.setDone(done);
+			repository.save(task);
+			return true;
+		}else {
+			return false;
+		}
+	}
 }

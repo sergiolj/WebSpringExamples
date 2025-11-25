@@ -26,13 +26,13 @@ public class MockDataFactory implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		logger.info("Creating database mockup data...");
 		repository.saveAll(List.of(
-				new Task("Ao acordar", "Tomar os suplementos", false),
-				new Task("Ao acordar", "Beber 500ml de água", false),
-				new Task("Ao acordar", "Café da manhã com 2 ovos e duas claras, 80gr batata doce", false),
-				new Task("Antes de sair", "Molhar as plantas", false),
-				new Task("Antes de sair", "Colocar na mochila almoço", false),
-				new Task("Ao sair", "Checar se ficou algo ligado", false),
-				new Task("Ao sair", "Trancar a porta", false)
+				new Task(null, "Ao acordar", "Tomar os suplementos", false),
+				new Task(null, "Ao acordar", "Beber 500ml de água", false),
+				new Task(null, "Ao acordar", "Café da manhã com 2 ovos e duas claras, 80gr batata doce", false),
+				new Task(null, "Antes de sair", "Molhar as plantas", false),
+				new Task(null, "Antes de sair", "Colocar na mochila almoço", false),
+				new Task(null, "Ao sair", "Checar se ficou algo ligado", false),
+				new Task(null, "Ao sair", "Trancar a porta", false)
 				));
 		
 		logger.info("Mockup data done. Total of registers : {}", repository.count());

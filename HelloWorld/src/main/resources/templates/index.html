@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 <meta charset="UTF-8">
@@ -42,11 +42,21 @@ family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="styl
 				<div class="main_task_list_completed"> 2/4 completed</div>
 			</div>
 			<div id="main_task_list_enlisted">
-				<!-- Aqui devem ser inseridos os registros do banco -->
+			<!--
+			<div id="main_task_list_enlisted"
+				th:insert="~{taskFragments :: task-list-content}">
+				
+				 Aqui devem ser inseridos os registros do banco -->
 			</div>
+			<a th:href="@{/about}">Sobre esse projeto</a>
 		</div>
 	</div>
 </div>
+
+</div>
+
+<!-- Anotação de href específica do Thymeleaf -->
+
 
     <script src="assets/script.js"></script>
 </body>

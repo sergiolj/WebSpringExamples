@@ -1,0 +1,20 @@
+ <div th:fragment="task-list-content">
+        
+        <div th:each="task : ${tasks}" class="task-card">
+            
+            <div class="task-info">
+                <h3 class="task-title" th:text="${task.name}">Nome da Tarefa</h3>
+                
+                <p class="task-desc" 
+                   th:text="${task.description} ?: ''">Descrição da Tarefa</p>
+            </div>
+            
+            <form th:action="@{'/tasks/' + ${task.id}}" th:method="delete">
+                <button type="submit" class="btn-delete">
+                    🗑️
+                </button>
+            </form>
+            
+        </div>
+        
+    </div>

@@ -1,8 +1,8 @@
 package br.edu.ucsal.sergiolj.hellow.controller;
 
 import java.util.List;
+import java.util.Map;
 
-import org.apache.catalina.connector.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.ucsal.sergiolj.hellow.model.Task;
 import br.edu.ucsal.sergiolj.hellow.service.TaskService;
-import jakarta.validation.constraints.Positive;
+
 
 @RestController
 @RequestMapping(value = "/tasks")
@@ -36,23 +36,42 @@ public class TaskController {
 	
 	@PostMapping
 	public ResponseEntity<Task> create(@RequestBody Task task){
-		Task newTask = service.add(task);
+		service.add(task);
 		return ResponseEntity.status(HttpStatus.CREATED).body(task);
 	}
 	
-	@PutMapping
+	@PutMapping("/{id}")
 	public ResponseEntity<Task> update(@PathVariable Long id, @RequestBody Task task){
-		
 		return service.update(id, task)
 				.map(ResponseEntity::ok)
 				.orElse(ResponseEntity.notFound().build());
 	}
-	@DeleteMapping
-	public ResponseEntity<Task> delete(@PathVariable Long id){
-		if(service.delete(id)) {
-			return ResponseEntity.noContent().build();
+	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<String> delete(@PathVariable Long id){
+		try {
+			if(service.delete(id)) {
+				return ResponseEntity.ok().body("Tarefa apagada da lista");
+			}else {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND)
+					.body("Não foi encontrada uma tarefa com esse ID.");
 		}
-		return ResponseEntity.notFound().build();
+		}catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+					.body("Houve um erro inesperado");
+		}
 	}
 	
+	@PutMapping("/{id}/done")
+	public ResponseEntity<?> updateTaskDone(@PathVariable Long id, @RequestBody Map<String, Boolean> requestBody){
+		boolean done = requestBody.get("done");
+		boolean updated = service.updateTaskDone(id, done);
+		
+		if(updated) {
+			return ResponseEntity.ok().build();
+		}else {
+			return ResponseEntity.notFound().build();
+		}
+			
+	}
 }
