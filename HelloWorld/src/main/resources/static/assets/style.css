@@ -1,0 +1,215 @@
+@charset "UTF-8";
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body, html{
+	height:100%;
+}
+
+#tittle{
+    color: #000;
+    font-family: "Plus Jakarta Sans";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.2px;
+}
+.line{
+    width: 100%;
+    border: 0;
+    border-top: 1px solid #D1C4E9;
+    margin-bottom: 15px;
+}
+.line_input{
+
+    margin-left: -25px;
+    width: calc(100% +25px);
+    border: 0;
+    border-top: 1px solid #D1C4E9;
+    margin-bottom: 15px;
+}
+
+.main{  
+    height: 100vh; 
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+.main_container {
+    display: flex;
+  
+    align-items: center;
+    width: 360px;
+    height: 800px;
+
+    border-radius: 20px 0;
+    border: 1px solid #EAEAEA;
+    
+    background-color:#DDD;
+    
+    border-radius: 40px 0 40px 0; 
+
+    padding: 2rem;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+
+.main_task_form_header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; 
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.main_task_form{
+    width: 290px;
+    height: 266px;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 7px;
+    border-color: #ffffff;
+    background: #F1EEF6;
+    padding: 16px;
+
+}
+
+.main_task_form_inputs {
+    display: flex; /* Coloca lado a lado */
+    gap: 15px;     /* Espaço entre a barra roxa e o texto */
+    flex: 1;       /* Ocupa o espaço restante no cartão */
+}
+
+.main_task_form_inputs_vertical-bar{
+    width: 10px;
+    border-radius: 10px;
+    background: #5534A5;
+    flex-shrink: 0;
+}
+
+.main.task_form_input_name{
+    width: 261px;
+    height: 35px;
+    border-style: none;
+    border-radius: 10px;
+}
+::placeholder {
+     color: #999; 
+     font-weight: 500;
+}
+
+.main_task_form_btn_add{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    background: #FFF;
+    color: #5534A5;
+    font-family: "Plus Jakarta Sans";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    
+
+    cursor: pointer; 
+    user-select: none; 
+    transition: transform 0.1s ease, background-color 0.2s;
+}
+
+.main_task_form_inputs_name,
+.main_task_form_imputs_description {
+    width: 100%;
+    background: transparent; /* Fundo transparente */
+    border: none;            /* Sem borda */
+    outline: none;           /* Sem contorno ao clicar */
+    
+    padding: 0; /* Remove padding interno padrão */
+    font-family: "Plus Jakarta Sans";
+    font-size: 16px; /* Texto um pouco maior fica mais bonito sem borda */
+    color: #333;
+}
+
+.main_task_form_imputs_description {
+    resize: none;
+    height: 170px;
+}
+.main_task_list{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background: white;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+/* Container que segura os itens (permite rolagem) */
+.task-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espaço entre as tarefas */
+    margin-top: 15px;
+    height: 100%;
+    overflow-y: auto; /* Scroll se tiver muitas tarefas */
+    padding-right: 5px; /* Espaço para a barra de rolagem */
+}
+
+/* O Cartão da Tarefa Individual */
+.task-card {
+    background: #FFF;
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between; /* Texto na esq, Botão na dir */
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    border: 1px solid #EAEAEA;
+    transition: 0.2s;
+}
+
+.task-card:hover {
+    transform: translateY(-2px); /* Efeito de levantar */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.task-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.task-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #333;
+}
+
+.task-desc {
+    font-size: 12px;
+    color: #888;
+    margin-top: 2px;
+}
+
+/* Botão de Deletar */
+.btn-delete {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 5px;
+    opacity: 0.6;
+    transition: 0.2s;
+}
+
+.btn-delete:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}

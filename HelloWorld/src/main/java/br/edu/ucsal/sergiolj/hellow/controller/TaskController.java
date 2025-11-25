@@ -35,7 +35,7 @@ public class TaskController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Task> create(@PathVariable Long id, @RequestBody Task task){
+	public ResponseEntity<Task> create(@RequestBody Task task){
 		Task newTask = service.add(task);
 		return ResponseEntity.status(HttpStatus.CREATED).body(task);
 	}
