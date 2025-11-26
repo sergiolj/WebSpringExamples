@@ -1,5 +1,6 @@
 class Task{
-	constructor(name, description){
+	constructor(id, name, description){
+		this.id = id;
 		this.name = name;
 		this.description = description;
 	}
@@ -22,6 +23,7 @@ function addTask(){
 			    'Content-Type': 'application/json'
 			    },
 			    body: JSON.stringify({
+					id: null,
 			        name: name,
 			        description: description,
 			    })
@@ -31,6 +33,7 @@ function addTask(){
 					console.log("Tarefa Salva com sucesso");
 					nameInput.value = "";
 					descriptionInput.value = "";
+					getTaskList();
 				}else{
 					console.error("Erro ao salvar tarefa!")
 				}
@@ -39,6 +42,7 @@ function addTask(){
 	}else{
 		alert("Nome da tarefa não pode ser vazio!")
 	}
+	
 }
 
 function getTaskList(){
@@ -77,16 +81,17 @@ function createDataFromDB() {
         taskCard.className = 'task-card'; // Classe para estilizar no CSS
         
         // Verifica se tem descrição para não imprimir "undefined"
-        const descriptionText = task.description ? task.description : '';
+        const taskDescription = task.description ? task.description : '';
 
         // Monta o HTML interno (Título, Descrição e Botão Deletar)
         // Note o onclick="deleteTask(${task.id})" -> Ele passa o ID do banco para a função
         taskCard.innerHTML = `
             <div class="task-info">
+				<h3 class="task_id">${task.id}</h3>
                 <h3 class="task-title">${task.name}</h3>
-                <p class="task-desc">${descriptionText}</p>
+                <p class="task-desc">${taskDescription}</p>
             </div>
-            <button class="btn-delete" onclick="deleteTask(${task.id})">
+            <button class="btn-delete" onclick="deleteTask('${task.id}')">
                 🗑️
             </button>
         `;
@@ -110,9 +115,11 @@ function updateCounters() {
 // Função placeholder para o Delete (para o botão não dar erro)
 function deleteTask(id) {
     if(confirm("Deseja excluir a tarefa " + id + "?")) {
-        fetch(`http://localhost:8080/tasks/${id}`, { method: 'DELETE' })
-        .then(res => {
-            if(res.ok) { 
+        fetch(`http://localhost:8080/tasks/${id}`, { 
+			method: 'DELETE' 
+		})
+        .then(response => {
+            if(response.ok) { 
                 getTaskList(); // Recarrega a lista
             }
         });

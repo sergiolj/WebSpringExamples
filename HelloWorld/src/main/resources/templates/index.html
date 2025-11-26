@@ -10,7 +10,7 @@
 family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 
@@ -18,7 +18,8 @@ family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="styl
 
 	<div class="main_container">
 
-		<div class="main_container_background">
+		<div class="main_container_delimited">
+
 			<div class="main_task_form">
 			<div class="main_task_form_header">
 				<h1 id="tittle">Task Manager</h1>
@@ -26,38 +27,41 @@ family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="styl
 			</div>
 			<hr class="line">
 		
-			<div class="main_task_form_inputs">
-				<div class="main_task_form_inputs_vertical-bar"></div>
-				<div class="main_task_form_inputs_textareas">
-					<input id="task_name" class="main_task_form_inputs_name" type="text" placeholder="Task Name">
-					<hr class="line_input">
-					<textarea id="task_descr" class="main_task_form_imputs_description" placeholder="Description"></textarea>
+				<div class="main_task_form_inputs">
+					<div class="main_task_form_inputs_vertical-bar"></div>
+					<div class="main_task_form_inputs_textareas">
+						<input id="task_name" class="main_task_form_inputs_name" type="text" placeholder="Task Name">
+						<hr class="line_input">
+						<textarea id="task_descr" class="main_task_form_inputs_description" placeholder="Description"></textarea>
+					</div>
 				</div>
 			</div>
-		</div>
 
 		<div class="main_task_list">
 			<div class="main_task_list_head">
 				<div class="main_task_list_count"> (0) </div>
-				<div class="main_task_list_completed"> 2/4 completed</div>
+				<div class="main_task_list_completed"></div>
 			</div>
+			
 			<div id="main_task_list_enlisted">
 			<!--
 			<div id="main_task_list_enlisted"
 				th:insert="~{taskFragments :: task-list-content}">
 				
 				 Aqui devem ser inseridos os registros do banco -->
-			</div>
+			</div>		
+		</div>
+		
+	</div>
+		<div class="footer">
 			<a th:href="@{/about}">Sobre esse projeto</a>
 		</div>
+	
 	</div>
-</div>
-
+		
 </div>
 
 <!-- Anotação de href específica do Thymeleaf -->
-
-
-    <script src="assets/script.js"></script>
+    <script th:src="@{/js/script.js}"></script>
 </body>
 </html>

@@ -20,11 +20,11 @@ import br.edu.ucsal.sergiolj.hellow.service.TaskService;
 
 @RestController
 @RequestMapping(value = "/tasks")
-public class TaskController {
+public class TaskRestController {
 	
 	private TaskService service;
 
-	public TaskController(TaskService service) {
+	public TaskRestController(TaskService service) {
 		super();
 		this.service = service;
 	}
